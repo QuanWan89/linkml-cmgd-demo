@@ -1,3 +1,5 @@
+pwd
+csv2json --help
 csv2json -d -t ../inst/curated/AsnicarF_2021/AsnicarF_2021_metadata.tsv test.json
 sed -i '1s/^/{"samples":/' test.json
 echo '}' >> test.json
