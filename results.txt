@@ -21,7 +21,7 @@ Traceback (most recent call last):
   File "test", line 68, in __post_init__
   File "test", line 68, in <listcomp>
   File "<string>", line 150, in __init__
-  File "test", line 293, in __post_init__
-  File "/opt/hostedtoolcache/Python/3.10.9/x64/lib/python3.10/site-packages/linkml_runtime/utils/enumerations.py", line 52, in __init__
-    raise ValueError(f"Unknown {self.__class__.__name__} enumeration code: {key}")
-ValueError: Unknown YesNo enumeration code: no
+  File "test", line 699, in __post_init__
+  File "/opt/hostedtoolcache/Python/3.10.9/x64/lib/python3.10/site-packages/linkml_runtime/utils/yamlutils.py", line 48, in __post_init__
+    raise ValueError('\n'.join(messages))
+ValueError:  Unknown argument: test_non_westernized = 'test_no'
