@@ -25,7 +25,7 @@ jobs:
           sed -i '1s/^/{"samples":/' test.json
           echo '}' >> test.json
       - name: linkml validate
-        if: always()
+        continue-on-error: true
         run: |
           linkml-validate -s schema.yaml test.json 2> results.txt
           cat results.txt
