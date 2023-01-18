@@ -21,5 +21,7 @@ jobs:
           pip install linkml
       - name: run batch script
         run: |
-          cd scripts
-          sh batch.sh
+          csv2json -d -t $GITHUB_WORKSPACE/inst/curated/AsnicarF_2021/AsnicarF_2021_metadata.tsv test.json
+          sed -i '1s/^/{"samples":/' test.json
+          echo '}' >> test.json
+          cat test.json
