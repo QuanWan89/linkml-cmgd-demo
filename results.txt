@@ -1,0 +1,27 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.10.9/x64/bin/linkml-validate", line 8, in <module>
+    sys.exit(cli())
+  File "/opt/hostedtoolcache/Python/3.10.9/x64/lib/python3.10/site-packages/click/core.py", line 1130, in __call__
+    return self.main(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.9/x64/lib/python3.10/site-packages/click/core.py", line 1055, in main
+    rv = self.invoke(ctx)
+  File "/opt/hostedtoolcache/Python/3.10.9/x64/lib/python3.10/site-packages/click/core.py", line 1404, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/opt/hostedtoolcache/Python/3.10.9/x64/lib/python3.10/site-packages/click/core.py", line 760, in invoke
+    return __callback(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.9/x64/lib/python3.10/site-packages/linkml/validators/jsonschemavalidator.py", line 143, in cli
+    obj = loader.load(source=input, target_class=py_target_class, **inargs)
+  File "/opt/hostedtoolcache/Python/3.10.9/x64/lib/python3.10/site-packages/linkml_runtime/loaders/loader_root.py", line 85, in load
+    results = self.load_any(*args, **kwargs)
+  File "/opt/hostedtoolcache/Python/3.10.9/x64/lib/python3.10/site-packages/linkml_runtime/loaders/json_loader.py", line 28, in load_any
+    return self.load_source(source, loader, target_class,
+  File "/opt/hostedtoolcache/Python/3.10.9/x64/lib/python3.10/site-packages/linkml_runtime/loaders/loader_root.py", line 66, in load_source
+    return target_class(**data_as_dict)
+  File "<string>", line 4, in __init__
+  File "test", line 68, in __post_init__
+  File "test", line 68, in <listcomp>
+  File "<string>", line 150, in __init__
+  File "test", line 293, in __post_init__
+  File "/opt/hostedtoolcache/Python/3.10.9/x64/lib/python3.10/site-packages/linkml_runtime/utils/enumerations.py", line 52, in __init__
+    raise ValueError(f"Unknown {self.__class__.__name__} enumeration code: {key}")
+ValueError: Unknown YesNo enumeration code: no
