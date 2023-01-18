@@ -25,6 +25,16 @@ jobs:
           sed -i '1s/^/{"samples":/' test.json
           echo '}' >> test.json
       - name: linkml validate
+        if: always()
         run: |
           linkml-validate -s schema.yaml test.json > results.txt
           cat results.txt
+      - name: Setup git config
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+      - name: Commit Exports
+        run: |
+          git add results.txt
+          git commit -m "validation update"
+          git push origin main
