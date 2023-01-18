@@ -1,0 +1,2026 @@
+name: Waldron_Lab_Curated_Schema
+id: https://waldronlab.io
+prefixes:
+  linkml: https://w3id.org/linkml/
+  schema: http://schema.org/
+  ORCID: https://orcid.org/
+  EFO: http://www.ebi.ac.uk/efo/EFO_
+  UBERON: http://purl.obolibrary.org/obo/UBERON_
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  HP: http://purl.obolibrary.org/obo/HP_
+  PATO: http://purl.obolibrary.org/obo/PATO_
+  DOID: http://purl.obolibrary.org/obo/DOID_
+  MONDO: http://purl.obolibrary.org/obo/MONDO_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  
+imports:
+  - linkml:types
+default_range: string
+
+classes:
+  Container:
+    tree_root: true
+    attributes:
+      samples:
+        multivalued: true
+        inlined_as_list: true
+        range: Sample
+  Sample:
+    slots:
+      - sample_id
+      - subject_id
+      - study_name
+      - age
+      - gender
+      - body_site
+      - body_subsite
+      - antibiotics_current_use
+      - antibiotics_family
+      - study_condition
+      - disease
+      - disease_subtype
+      - infant_age
+      - age_category
+      - visit_number
+      - BMI
+      - country
+      - location
+      - population
+      - travel_destination
+      - non_westernized
+      - lifestyle
+      - brinkman_index
+      - days_from_first_collection
+      - sequencing_platform
+      - DNA_extraction_kit
+      - PMID #study level
+      - number_reads
+      - number_bases
+      - minimum_read_length
+      - median_read_length
+      - NCBI_accession
+      - pregnant
+      - lactating
+      - birth_control_pil
+      - smoker
+      - ever_smoker
+      - alcohol
+      - alcohol_numeric
+      - mumps
+      - ajcc
+      - fobt
+      - tnm
+      - days_after_onset
+      - stec_count
+      - shigatoxin_2_elisa
+      - stool_texture
+      - insulin_cat
+      - inr
+      - protein_intake
+      - flg_genotype
+      - momeducat
+      - hitchip_probe_class
+      - hitchip_probe_number
+      - mgs_richness
+      - hla_drb12
+      - hla_dqa12
+      - hla_dqa11
+      - hla_drb11
+      - hla_dbq12
+      - hla_dbq11
+      - ctp
+      - start_solidfood
+      - triglycerides
+      - cholesterol
+      - hdl
+      - ldl
+      - ALT
+      - eGFR
+      - adiponectin
+      - fasting_insulin
+      - hba1c
+      - c_peptide
+      - glp_1
+      - cd163
+      - il_1
+      - leptin
+      - glucose
+      - fasting_glucose
+      - fgf_19
+      - glutamate_decarboxylase_2_antibody
+      - creatinine
+      - creatine
+      - albumine
+      - bilubirin
+      - prothrombin_time
+      - dyastolic_p
+      - systolic_p
+      - hscrp
+      - ferm_milk_prod_consumer
+      - family
+      - family_role
+      - born_method
+      - c_section_type
+      - premature
+      - birth_order
+      - age_twins_started_to_live_apart
+      - feeding_practice
+      - breastfeeding_duration
+      - formula_first_day
+      - ESR
+      - HLA
+      - autoantibody_positive
+      - age_seroconversion
+      - age_T1D_diagnosis
+      - disease_stage
+      - disease_location
+      - calprotectin
+      - treatment
+      - remission
+      - anti_PD_1
+      - wbc
+      - rbc
+      - blood_platelet
+      - hemoglobinometry
+      - ast
+      - alt
+      - globulin
+      - urea_nitrogen
+      - ASO
+      - anti_ccp_antibody
+      - rheumatoid_factor
+      - dental_sample_type
+      - history_of_periodontitis
+      - PPD_M
+      - PPD_B
+      - PPD_D
+      - PPD_L
+      - zigosity
+      - menopausal_status
+      - BASDAI
+      - BASFI
+      - HBI
+      - SCCAI
+      - birth_weight
+      - gestational_age
+      - diet
+      - subcohort
+      - RECIST
+      - ORR
+      - PFS12
+      - curator
+      - uncurated_metadata
+      - change_in_tumor_size
+      - performance_status
+      - previous_therapy
+      - toxicity_above_zero
+
+      # *_metadata.tsv:
+    
+    # slots are first-class entities in the metamodel
+    # delcaring them here allows them to be reused elsewhere
+slots:
+
+  project_name:
+
+  samples:
+    multivalued: true
+    inlined_as_list: true
+  #        range: Sample
+
+  studies:
+    multivalued: true
+    inlined_as_list: true
+  #        range: Study
+
+  study_name:
+    range: string
+    required: false
+    multivalued: false
+    # pattern: '[a-zA-Z-]+_[0-9]4} | [a-zA-Z-]+_[0-9]4}[a-zA-Z-]+ | [a-zA-Z-]+_[0-9]4}_[a-zA-Z-]+ | [a-zA-Z-]+_[0-9]4}_[a-zA-Z0-9]+'
+    # decide whether to keep regex patterns
+    description: 'Dataset name.'
+
+  sample_id:
+    range: string
+    required: true
+    multivalued: false
+    pattern: '[0-9a-zA-Z_]'
+    # decide whether to keep regex patterns
+    description: 'Sample identifier.'
+
+  subject_id:
+    range: string
+    required: true
+    multivalued: false
+    pattern: '[0-9a-zA-Z_]'
+    # decide whether to keep regex patterns
+    description: 'Subject identifier.'
+
+  body_site:
+    aliases:
+      - host_anatomy
+      - host_anatomy_ontology
+    range: Body_Site
+    required: false
+    multivalued: false
+    description: 'Bodysite of acquisition.'
+
+  body_subsite:
+    range: Body_Subsite
+    required: false
+    multivalued: false
+    description: 'Subsite of body site of acquisition.'
+
+  antibiotics_current_use:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'Subject is currently taking antibiotics.'
+
+  antibiotics_family:
+    aliases:
+      - drug_ontology
+    required: false
+    multivalued: true
+    range: Antibiotics
+    description: 'Family of antibiotics currently used; Semicolon-separated.'
+
+  study_condition:
+    aliases:
+      - main_clinical_condition
+      - condition_under_study
+      - study_condition_ontology
+    range: Condition #See disease_ontology.yaml
+    required: false
+    multivalued: false
+    description: 'The main disease or condition under study; control for controls;STEC=Shiga-toxigenic E.coli;CDI=Clostridium difficile infection;IBD=Inflammatory bowel disease;T2D= Type-2 diabetes;T1D=Type-1 diabetes;AD=Atopic dermatitis;AR=Allergic rhinitis;IGT=Impaired glucose tolerance;AS=Ankylosing spondylitis;RA=rheumatic arthritis;FMT=fecal microbiota transplantaion;SRP=Scaling and root planing;CMV=Cytomegalovirus;HBV_HDV_HEV= Hepatitis viruses;BD= Bechet-disease;ACVD= Artheriosclerotic Cardiovalscular Disease'
+
+  disease:
+    aliases:
+      - condition
+      - condition_ontology
+    range: Disease #See disease_ontology.yaml
+    required: false
+    multivalued: true
+    description: "Semicolon-delimited vector of conditions; Use healthy only if subject is known to be healthy; CRC=colorectal cancer;CD=Crohn's disease; for other abbreviations see study_condition"
+
+  disease_subtype:
+    range: Disease_subtype  #See disease_ontology.yaml
+    required: false
+    multivalued: true
+    description: "Disease subtype; CD=Chrohn's Disease;AS=Ankylosing spondylitis;NAFLD=nonalcoholic fatty liver disease;for other abbreviations see study_condition"
+
+  age:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Subject age (years).'
+
+  infant_age:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Infant age (days); should be used for infants < 2 years old.'
+
+  age_category:
+    aliases:
+      - age_category_ontology
+    range: cat_age
+    required: false
+    multivalued: false
+    description: 'Age category: newborn < 1 year; 1 <= child < 12; 12 <= schoolage < 19; 19 <= adult <= 65; senior > 65.'
+
+  gender:
+    range: Gender
+    required: false
+    multivalued: false
+    description: 'Subject gender.'
+
+  visit_number:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Visit number for studies with repeated visits.'
+
+  BMI:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Body mass index (kg/m2).'
+
+  country:
+    aliases:
+      - country_ontology
+    range: Country
+    required: true
+    multivalued: false
+    description: 'Country of acquisition using ISO3 code from http://www.fao.org/countryprofiles/iso3list/en/.'
+
+  location:
+    required: false
+    multivalued: false
+#    pattern: '.+'
+    description: 'Free-form additional location information.'
+
+  population:
+    range: string
+    required: false
+    multivalued: false
+    pattern: '[a-zA-Z]\\S+'
+    description: 'can describe the belonging to a specific population'
+
+  travel_destination:
+    range: Travel_Destination
+    required: false
+    multivalued: false
+    description: 'travel destination using ISO3 code from http://www.fao.org/countryprofiles/iso3list/en/.'
+
+  non_westernized:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'Subject belongs to a non-westernized community.'
+
+  lifestyle:
+    required: false
+    multivalued: false
+    range: Life_style
+    description: 'to describe the lifestyle of non-westernized people'
+
+  brinkman_index:
+    range: float
+    required: false
+    multivalued: false
+    description: 'The Brinkman index if provided'
+
+  days_from_first_collection:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Used for time series studies.'
+
+  sequencing_platform:
+    range: Sequencing_Platform
+    required: true
+    multivalued: false
+    description: 'This will be modified as new sequencing platforms are added to the database.'
+
+  DNA_extraction_kit:
+    range: DNA_Extraction_Kit
+    required: false
+    multivalued: false
+    description: 'DNA extraction kit.'
+
+  PMID:
+    range: integer
+    required: false
+    multivalued: false
+    pattern: '{[0-9]8}'
+    description: 'Identifier of the main publication in PubMed.'
+
+  number_reads:
+    range: integer
+    required: true
+    multivalued: false
+    description: 'Number of final reads - calculated from raw data.'
+
+  number_bases:
+    range: integer
+    required: true
+    multivalued: false
+    description: 'Total number of bases sequenced in the sample - calculated from raw data.'
+
+  minimum_read_length:
+    range: integer
+    required: true
+    multivalued: false
+    description: 'Minimum read length - calculated from raw data.'
+
+  median_read_length:
+    range: integer
+    required: true
+    multivalued: false
+    description: 'Median read length - calculated from raw data.'
+
+  NCBI_accession:
+    required: false
+    multivalued: true
+    pattern: '[ES]R[SR][0-9]+'
+    description: 'Semicolon-separated vector of NCBI accessions.'
+
+  pregnant:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'Pregnancy of the subject (men: no).'
+
+  lactating:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'Lactating subjects (men: no).'
+
+  birth_control_pil:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'Use of the birth-control-pils at the sampling time (men: no).'
+
+  smoker:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'Currently a smoker at sampling.'
+
+  ever_smoker:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'Ever been a smoker.'
+
+  alcohol:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'Subject is reported as a drinker.'
+
+  alcohol_numeric:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Alcohol consumption reported as a float.'
+
+  mumps:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'Subject has been through mumps in life.'
+
+  ajcc:
+    required: false
+    multivalued: false
+    range: Ajcc_enum
+    description: 'AJCC staging for colorectal-cancer.'
+
+  fobt:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'Fecal occult blood test.'
+
+  tnm:
+    required: false
+    multivalued: false
+    pattern: 't4n1m1|t3nxm1|t2n0m1|tnm|t3n3m1|t2n1m1|t4n2m1|t3n0m1|t3n2m0|t4n0m1|t4n1m0|no|t4n0m0|t3n0m0|t3n1m0|ptis|t1n0m0|t4n2m0|t3n1m1|t3n2m1|tisn0m0|t2n0m0|t1n0m1|t2n1m0|t2m0n0|t2n2m0'
+    description: 'TNM classification for colorectal-cancer.'
+
+  days_after_onset:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Days from the onset of the disease.'
+
+  stec_count:
+    required: false
+    multivalued: false
+    range: Stec_count_enum
+    description: 'Amount of STEC colonies detected.'
+
+  shigatoxin_2_elisa:
+    required: false
+    multivalued: false
+    range: Pos_neg
+    description: 'Enzyme-linked immunosorbent assay for Shiga-toxigenic E.coli.'
+
+  stool_texture:
+    required: false
+    multivalued: false
+    range: Texture
+    description: 'Texture of the stool at sampling time.'
+
+  insulin_cat:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'Insulin intake (yes/no)'
+
+  inr:
+    range: float
+    required: false
+    multivalued: false
+    description: 'International normalized ratio.'
+
+  protein_intake:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Indication about the protein intake in the Mongolians diet.'
+
+  flg_genotype:
+    required: false
+    multivalued: false
+    pattern: 'wt|s1515x|e2422x|e2422x/3321dela'
+    description: 'Any term for filaggrin-protein genotype.'
+
+  momeducat:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Years of education of the mother of the subject.'
+
+  hitchip_probe_class:
+    required: false
+    multivalued: false
+    pattern: 'lpc|hpc'
+    description: 'High/Low species content onthe HIT-chip probe.'
+
+  hitchip_probe_number:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'HIT-chip probe score.'
+
+  mgs_richness:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Metagenomic species richness.'
+
+  hla_drb12:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Hla_drb12 allele.'
+
+  hla_dqa12:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Hla_dqa12 allele.'
+
+  hla_dqa11:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Hla_dqa11 allele.'
+
+  hla_drb11:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Hla_drb11 allele.'
+
+  hla_dbq12:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Hla_dbq12 allele.'
+
+  hla_dbq11:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Hla_dbq11 allele.'
+
+  ctp:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Cytidine triphosphate level.'
+
+  start_solidfood:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'First day of solid food introduction (newborns).'
+
+  triglycerides:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use mg/dl.'
+
+  cholesterol:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use mg/dl.'
+
+  hdl:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use mg/dl.'
+
+  ldl:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use mg/dl.'
+
+  ALT:
+    range: float
+    required: false
+    multivalued: false
+    description: 'The Alanine aminotransferase test. STD. results of the test are allowed.'
+
+  eGFR:
+    range: float
+    required: false
+    multivalued: false
+    description: 'The Estimated Glomerular Filtration Rate. STD. estimate of the test allowed.'
+
+  adiponectin:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use mg/l.'
+
+  fasting_insulin:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use micro-units/ml.'
+
+  hba1c:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use %.'
+
+  c_peptide:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use ng/ml.'
+
+  glp_1:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use pmol/l.'
+
+  cd163:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use ng/ml.'
+
+  il_1:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use pg/ml.'
+
+  leptin:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use micrograms/l.'
+
+  glucose:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use mg/dl.'
+
+  fasting_glucose:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use mg/dl.'
+
+  fgf_19:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use pg/ml.'
+
+  glutamate_decarboxylase_2_antibody:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Glutamic acid decarboxylase (GAD65) antibody assay.'
+
+  creatinine:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use micro-mol/l.'
+
+  creatine:
+    range: float
+    required: false
+    multivalued: false
+    comments:
+      - 'Curators must use micro-mol/l.'
+
+  albumine:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Albumine level; curators must use g/l.'
+
+  bilubirin:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Bilubirin; curators must use mg/dl.'
+
+  prothrombin_time:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Prothrombin time in seconds.'
+
+  dyastolic_p:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Measured in mm/Hg.'
+
+  systolic_p:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Measured in mm/Hg.'
+
+  hscrp:
+    range: float
+    required: false
+    multivalued: false
+    description: 'High-sensitivity C-reactive protein test result;curator have to use mg/L'
+
+  ferm_milk_prod_consumer:
+    required: false
+    multivalued: false
+    pattern: 'dfmp'
+    description: 'Dfmp means yes (defined milk product).'
+
+  family:
+    required: false
+    multivalued: false
+    pattern: '.+'
+    description: 'A number identifying the family subjects belong; not corrected for meta-analyses.'
+
+  family_role:
+    range: Family_Role
+    required: false
+    multivalued: false
+    description: 'Role in the family when multiple samples come from the same family but different persons.'
+
+  born_method:
+    required: false
+    multivalued: false
+    range: Born_method_enum
+    description: 'C-section vs vaginal birth.'
+
+  c_section_type:
+    required: false
+    multivalued: false
+    pattern: 'Elective_CS
+    Emergency_CS'
+    description: 'C-section main decision reason.'
+
+  premature:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'If premature at birth.'
+
+  birth_order:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Can be used for multiple birth.'
+
+  age_twins_started_to_live_apart:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'Age at which twins started to live apart (years).'
+
+  feeding_practice:
+    range: Feeding_Practice
+    required: false
+    multivalued: false
+    description: 'Feeding practice.'
+
+  breastfeeding_duration:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'curator must use days'
+
+  formula_first_day:
+    range: integer
+    required: false
+    multivalued: false
+    description: 'the age infants get the first formula feeding in days'
+
+  ESR:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Erythrocyte sedimentation rate (ESR) in mm/H.'
+
+  HLA:
+    required: false
+    multivalued: true
+    pattern: '.+'
+    description: 'HLA DR-DQ alleles conferring risk of Typ-1-Diabetes (T1D)'
+
+  autoantibody_positive:
+    required: false
+    multivalued: true
+    pattern: '.+'
+    description: 'Tested positive for AAB.'
+
+  age_seroconversion:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Age at seroconvention was detected (days).'
+
+  age_T1D_diagnosis:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Age at which T1D was diagnosed (days).'
+
+  disease_stage:
+    required: false
+    multivalued: false
+    pattern: '[A-Z]1'
+    description: 'Stage information for diseases that can be divided into multiple stages.'
+
+  disease_location:
+    required: false
+    multivalued: true
+    pattern: '.+'
+    description: 'Can be used for diseases which occur on different body parts like CD.'
+
+  calprotectin:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Higher calprotectin is an indicator for inflammation in the gastrointestinal tract.'
+
+  treatment:
+    range: Treatment
+    required: false
+    multivalued: true
+    description: 'medications or treatments against the diseases.'
+
+  remission:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'Remission of the disease.'
+
+
+  anti_PD_1:
+    required: false
+    multivalued: false
+    pattern: 'responder
+    non_responder'
+    description: 'The patient results to be a responder/non-responder to the anti-PD1 treatment.'
+
+
+  wbc:
+    range: float
+    required: false
+    multivalued: false
+    description: 'White blood cells count; curators must use *1000counts/µL'
+
+
+  rbc:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Red blood cells count; curators must use *million_counts/µL'
+
+
+  blood_platelet:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curators must use *1000counts/µl'
+
+
+  hemoglobinometry:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Hemoglobin concentration in blood; curators must use g/dl'
+
+  ast:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Aspartate transaminase; curator must use U/l'
+
+  alt:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Alanine aminotransferase; curator must use U/l'
+
+  globulin:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curator must use g/l'
+
+  urea_nitrogen:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curator must use mmol/l'
+
+  ASO:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Antistreptolysin O; curator must use IU/ml'
+
+  anti_ccp_antibody:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curator must use U/ml'
+
+  rheumatoid_factor:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Curator must use IU/ml'
+
+  dental_sample_type:
+    range: Dental_Samples
+    required: false
+    multivalued: false
+    description: 'Dental sample type.'
+
+  history_of_periodontitis:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'If the patients has been reported having previously suffered of periodontitis in one of more sites.'
+
+  PPD_M:
+    range: float
+    required: false
+    multivalued: false
+    description: "Depth of the pocket reached by the probe in a dental implant ('M')."
+
+  PPD_B:
+    range: float
+    required: false
+    multivalued: false
+    description: "Depth of the pocket reached by the probe in a dental implant ('B')."
+
+  PPD_D:
+    range: float
+    required: false
+    multivalued: false
+    description: "Depth of the pocket reached by the probe in a dental implant ('D')."
+
+  PPD_L:
+    range: float
+    required: false
+    multivalued: false
+    description: "Depth of the pocket reached by the probe in a dental implant ('L')."
+
+  zigosity:
+    range: Zigosity
+    required: false
+    multivalued: false
+    description: 'Zigosity.'
+
+  menopausal_status:
+    range: Menopausual_Status
+    required: false
+    multivalued: false
+    description: 'Menopausal status.'
+
+  BASDAI:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Bath Ankylosing Spondylitis Disease Activity Index'
+
+  BASFI:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Bath Ankylosing Spondylitis Functional Index'
+
+  HBI:
+    range: float
+    required: false
+    multivalued: false
+    description: 'Harvey-Bradshaw Index clinical indication of active disease and inflammation'
+
+  SCCAI:
+    range: float
+    required: false
+    multivalued: false
+    description: 'simple clinical colitis activity index'
+
+  birth_weight:
+    range: float
+    required: false
+    multivalued: false
+    description: 'curators must use gramms'
+
+  gestational_age:
+    range: float
+    required: false
+    multivalued: false
+    description: 'duration time of pregnancy;curatos must use weeks'
+
+  diet:
+    range: Diet
+    required: false
+    multivalued: false
+    description: 'type of diet'
+
+  subcohort:
+    required: false
+    multivalued: false
+    pattern: '[0-9a-zA-Z]\\S+'
+    description: 'Identifier of a sub-set of the cohort. Can be everything.'
+
+  RECIST:
+    required: false
+    multivalued: false
+    pattern: RECIST_enum
+    description: 'RECIST classification for response to cancer-therapy: SD=Stable Disease; PR=Partial Response; PD=Progression Disease; CR=Complete Response'
+
+  ORR:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'Overall Response Rate (see also RECIST)'
+
+  PFS12:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: 'Progression-free survival in 12 months.'
+
+  change_in_tumor_size:
+    range: integer
+    required: false
+    multivalued: false
+    description: ''
+
+  performance_status:
+    range: float
+    required: false
+    multivalued: false
+    description: ''
+
+  previous_therapy:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: ''
+
+  toxicity_above_zero:
+    range: YesNo
+    required: false
+    multivalued: false
+    description: ''
+
+  curator:
+    range: Curator
+    required: true
+    multivalued: true
+    description: 'Curator name.'
+
+  uncurated_metadata:
+    required: false
+    multivalued: false
+    pattern: '.+'
+    description: 'A row for whatever field has not be included here.'
+
+
+
+enums:
+
+  YesNo:
+    permissible_values:
+      test_yes:
+      test_no:
+      NA:
+
+  cat_age:
+    permissible_values:
+      newborn:
+      child:
+      schoolage:
+      adult:
+      senior:
+      unknown:
+      NA:
+
+  Gender:
+    permissible_values:
+      male:
+      female:
+      other:
+      NA:
+
+  Body_Site:
+    permissible_values:
+      stool:
+        aliases:
+          - UBERON_0001988
+        description: feces
+        meaning: UBERON_0001988
+      skin:
+        aliases:
+          - UBERON_0002097
+        description: skin of body
+        meaning: UBERON_0002097
+      vagina:
+        aliases:
+          - UBERON_0000996
+        description: vagina
+        meaning: UBERON_0000996
+      oralcavity:
+        aliases:
+          - UBERON_0000167
+        description: oral cavity
+        meaning: UBERON_0000167
+      nasalcavity:
+        aliases:
+          - UBERON_0001707
+        description: nasal cavity
+        meaning: UBERON_0001707
+      lung:
+        aliases:
+          - UBERON_0002048
+        description: lung
+        meaning: UBERON_0002048
+      milk:
+        aliases:
+          - UBERON_0001913
+        description: milk
+        meaning: UBERON_0001913
+  Body_Subsite:
+    permissible_values:
+      anterior_nares:
+        aliases:
+          - UBERON_2001427
+        description: anterior naris
+        meaning: UBERON_2001427
+      hard_palate:
+        aliases:
+          - UBERON_0003216
+        description: hard palate
+        meaning: UBERON_0003216
+      keratinized_gingiva:
+        aliases:
+          - UBERON_0001949
+        description: gingival epithelium
+        meaning: UBERON_0001949
+      l_retroauricular_crease:
+        aliases:
+          - UBERON_0019243
+        description: skin crease
+        meaning: UBERON_0019243
+      r_retroauricular_crease:
+        aliases:
+          - UBERON_0019243
+        description: skin crease
+        meaning: UBERON_0019243
+      mid_vagina:
+        aliases:
+          - UBERON_0013524
+        description: median vaginal canal
+        meaning: UBERON_0013524
+      palatine_tonsils:
+        aliases:
+          - UBERON_0002373
+        description: palatine tonsil
+        meaning: UBERON_0002373
+      saliva:
+        aliases:
+          - UBERON_0001836
+        description: saliva
+        meaning: UBERON_0001836
+      supragingival_plaque:
+        aliases:
+          - UBERON_0016485
+        description: supragingival dental plaque
+        meaning: UBERON_0016485
+      subgingival_plaque:
+        aliases:
+          - UBERON_0016484
+        description: subgingival dental plaque
+        meaning: UBERON_0016484
+      throat:
+        aliases:
+          - UBERON_0000341
+        description: throat
+        meaning: UBERON_0000341
+      vaginal_introitus:
+        aliases:
+          - UBERON_0012317
+        description: vaginal oriface
+        meaning: UBERON_0012317
+      posterior_fornix:
+        aliases:
+          - UBERON_0016486
+        description: posterior fornix of vagina
+        meaning: UBERON_0016486
+      tongue_dorsum:
+        aliases:
+          - UBERON_0009471
+        description: dorsum of tongue
+        meaning:  UBERON_0009471
+      sputum:
+        aliases:
+          - UBERON_0007311
+        description: sputum
+        meaning: UBERON_0007311
+      buccal_mucosa:
+        aliases:
+          - UBERON_0006956
+        description: buccal mucosa
+        meaning: UBERON_0006956
+      left_elbow:
+        aliases:
+          - UBERON_0001461
+        description: elbow
+        meaning: UBERON_0001461
+      right_ear:
+        aliases:
+          - UBERON_0035174
+        description: right ear
+        meaning: UBERON_0035174
+      left_ear:
+        aliases:
+          - UBERON_0035295
+        description: left ear
+        meaning: UBERON_0035295
+      right_elbow:
+        aliases:
+          - UBERON_0001461
+        description: elbow
+        meaning: UBERON_0001461
+      rectal_swab:
+        aliases:
+          - NCIT_C173641
+        description: rectal swab specimen
+        meaning: NCIT_C173641
+      chest:
+        aliases:
+          - UBERON_0001443
+        description: chest
+        meaning: UBERON_0001443
+
+  Antibiotics:
+    permissible_values:
+      dopamine_antagonists:
+      phenylpiperidines:
+      thienobenzodiazepines:
+      blood_pressure_medication:
+      diabetes_oral_medication:
+      anti_retrovirals:
+      beta_blockers:
+      revers:e_trans:criptas:e_inhibitors:
+      anti_virals:
+      cephalos:porins:
+      penicillins:
+      macrolides:
+      beta_lactamas:e_inhibitors:
+      nitrofurans:
+      s:ulphonamides:
+      aminoglycos:ides:
+      carbapenems:
+      fluoroquinolones:
+      laxatives:
+      none:
+
+  Country:
+    permissible_values:
+      LBR:
+      SLV:
+      CAN:
+      DNK:
+      EST:
+      FJI:
+      FIN:
+      FRA:
+      DEU:
+      ITA:
+      MNG:
+      NLD:
+      NOR:
+      JPN:
+      ESP:
+      KOR:
+      BRA:
+      IRL:
+      PHL:
+      SWE:
+      USA:
+      GBR:
+      CHN:
+      RUS:
+      LUX:
+      AUT:
+      TZA:
+      PER:
+      MDG:
+      ISL:
+      BRN:
+      IDN:
+      MYS:
+      HUN:
+      SVK:
+      SGP:
+      ISR:
+      BGD:
+      KAZ:
+      IND:
+      GHA:
+      ETH:
+      CMR:
+
+  Travel_Destination:
+    permissible_values:
+      CMR:
+        text: CMR
+      ETH:
+        text: ETH
+      KEN:
+        text: KEN
+      TZA:
+        text: TZA
+      RWA:
+        text: RWA
+      IND:
+        text: IND
+      LKA:
+        text: LKA
+      NPL:
+        text: NPL
+
+  Condition:
+    permissible_values:
+      hypertension:
+      ACVD:
+      generic_diabetes:
+      acute_diarrhoea:
+      carcinoma_surgery_history:
+      cellulitis:
+      melanoma:
+      mucositis:
+      gangrene:
+      osteoarthritis:
+      control:
+      NK:
+      peri-implantitis:
+      pyelonefritis:
+      salmonellosis:
+      sepsis:
+      skininf:
+      suspinf:
+      arthritis:
+      STEC:
+      CRC:
+      adenoma:
+      fatty_liver:
+      pre-hypertension:
+      coeliac:
+      asthma:
+      gestational_diabetes:
+      cirrhosis:
+      CMV:
+      CDI:
+      IBD:
+      T2D:
+      T1D:
+      AD:
+      AR:
+      IGT:
+      ME/CFS:
+      premature_born:
+      schizofrenia:
+      ascites:
+      wilson:
+      otitis:
+      bronchitis:
+      pneumonia:
+      respiratoryinf:
+      cough:
+      stomatitis:
+      fever:
+      pyelonephritis:
+      infectiousgastroenteritis:
+      tonsillitis:
+      cystitis:
+      abdominalhernia:
+      psoriasis:
+      cephalosporins:
+      AS:
+      RA:
+      metabolic_syndrome:
+      FMT:
+      periodontitis:
+      SRP:
+      STH:
+      BD:
+      chorioamnionitis:
+      pre-eclampsia:
+      migraine:
+
+  Feeding_Practice:
+    permissible_values:
+      exclusively_breastfeeding:
+      no_breastfeeding:
+      mixed_feeding:
+      any_breastfeeding:
+      exclusively_formula_feeding:
+
+  Life_style:
+    permissible_values:
+      Hunter-gatherer:
+      Agriculturalist:
+      Agropastoralist:
+      Pastoralist:
+      Fisher:
+
+  Sequencing_Platform:
+    permissible_values:
+      IlluminaHiSeq:
+      IlluminaMiSeq:
+      IlluminaNextSeq:
+      IlluminaNovaSeq:
+
+  DNA_Extraction_Kit:
+    permissible_values:
+      Qiagen:
+      Gnome:
+      MoBio:
+      MPBio:
+      NorgenBiotek:
+      Illuminakit:
+      Maxwell_LEV:
+      PSP_Spin_Stool:
+      Tiangen:
+      PowerSoil:
+      Chemagen:
+      PowerSoilPro:
+      ZR_Fecal_DNA_MiniPrep:
+      KAMA_Hyper_Prep:
+      thermo_fisher:
+      other:
+
+  Disease:
+    permissible_values:
+      ACVD:
+        aliases:
+          - EFO_0003914
+        description: atherosclerosis
+        meaning: EFO_0003914
+      acute_diarrhoea:
+        aliases:
+          - DOID_0050140
+        description: acute diarrhea
+        meaning: DOID_0050140
+      cellulitis:
+        aliases:
+          - EFO_0003035
+        description: cellulitis
+        meaning: EFO_0003035
+      melanoma:
+        aliases:
+          - EFO_0000756
+        description: melanoma
+        meaning: EFO_0000756
+      gangrene:
+        aliases:
+          - EFO_0008574
+        description: gangrene
+        meaning: EFO_0008574
+      osteoarthritis:
+        aliases:
+          - EFO_0002506
+        description: osteoarthritis
+        meaning: EFO_0002506
+      control:
+        aliases:
+          - EFO_0001461
+        description: control
+        meaning: EFO_0001461
+      NK:
+        aliases:
+          - EFO_0000573
+        description: natural killer cell
+        meaning: EFO_0000573 #needs review
+      pyelonefritis:
+        aliases:
+          - EFO_1001141
+        description: pyelonephritis
+        meaning: EFO_1001141
+      salmonellosis:
+        aliases:
+          - MONDO_0000827
+        description: salmonellosis
+        meaning: MONDO_0000827 #needs review
+      sepsis:
+        aliases:
+          - EFO_1001478
+        description: sepsis
+        meaning: EFO_1001478
+      skininf:
+        aliases:
+          - NCIT_C35025
+        description: skin infection
+        meaning: NCIT_C35025 #needs review
+      suspinf:
+        description: #suspected infection??
+#        #meaning: UNKNOWN
+      arthritis:
+        aliases:
+          - EFO_0005856
+        description: arthritis
+        meaning: EFO_0005856
+      STEC:
+        aliases:
+          - CHEBI_27026
+        description: shiga toxin
+        meaning: CHEBI_27026 #needs review
+      CRC:
+        aliases:
+          - EFO_0005842
+        description: colorectal Cancer
+        meaning: EFO_0005842
+      adenoma:
+        aliases:
+          - EFO_0000232
+        description: adenoma
+        meaning: EFO_0000232
+      fatty_liver:
+        aliases:
+          - MONDO_0004790
+        description: fatty liver
+        meaning: MONDO_0004790
+      hypertension:
+        aliases:
+          - EFO_0000537
+        description: hypertension
+        meaning: EFO_0000537
+      pre-hypertension:
+        aliases:
+          - EFO_0004772
+        description: early onset hypertension ???
+        meaning: EFO_0004772 #needs review
+      coeliac:
+        aliases:
+          - EFO_0001060
+        description: celiac disease
+        meaning: EFO_0001060
+      asthma:
+        aliases:
+          - EFO_0000270
+        description: asthma
+        meaning: EFO_0000270
+      gestational_diabetes:
+        aliases:
+          - EFO_0004593
+        description: gestational diabetes
+        meaning: EFO_0004593
+      cirrhosis:
+        description: cirrhosis of liver
+        meaning: EFO_0001422
+      HBV:
+        aliases:
+          - EFO_0004197
+        description: hepatitis B virus infection
+        meaning: EFO_0004197
+      HDV:
+        aliases:
+          - EFO_0007304
+        description: hepatitis D virus infection
+        meaning: EFO_0007304
+      HEV:
+        aliases:
+          - EFO_0007303
+        description: hepatitis E virus infection
+        meaning: EFO_0007303
+      CMV:
+        aliases:
+          - EFO_0001062
+        description: cytomegalovirus infection
+        meaning: EFO_0001062
+      CDI:
+        aliases:
+          - EFO_0009130
+        description: clostridium difficile infection
+        meaning: EFO_0009130
+      IBD:
+        aliases:
+          - EFO_0000555
+        description: irritable bowel syndrome
+        meaning: EFO_0000555
+      T2D:
+        aliases:
+          - EFO_0001360
+        description: type 2 diabetes mellitus
+        meaning: EFO_0001360
+      T1D:
+        aliases:
+          - EFO_0001359
+        description: type 1 diabetes mellitus
+        meaning: EFO_0001359
+      AD:
+        aliases:
+          - EFO_0000249
+        description: alzheimer's disease
+        meaning: EFO_0000249
+      AR:
+        aliases:
+          - EFO_1000815
+        description: Aortic Regurgitation #???
+        meaning: EFO_1000815 #needs review
+      IGT:
+        aliases:
+          - EFO_0002546
+        description: abnormal glucose tolerance
+        meaning: EFO_0002546
+      schizophrenia:
+        aliases:
+          - EFO_0000692
+        description: schizophrenia
+        meaning: EFO_0000692
+      ascites:
+        aliases:
+          - HP_0001541
+        description: ascites
+        meaning: HP_0001541 #needs review
+      wilson:
+        aliases:
+          - NCIT_C84756
+        description: wilson disease
+        meaning: NCIT_C84756 #needs review
+      otitis: # There are multiple versions of otitis
+        description: otitis
+        #meaning: UNKNOWN
+      bronchitis:
+        aliases:
+          - EFO_0009661
+        description: bronchitis
+        meaning: EFO_0009661
+      pneumonia:
+        aliases:
+          - EFO_0003106
+        description: pneumonia
+        meaning: EFO_0003106
+      respiratoryinf:
+        aliases:
+          - NCIT_C27219
+        description: respiratory tract infection
+        meaning: NCIT_C27219 #needs review
+      cough:
+        aliases:
+          - HP_0012735
+        description: cough
+        meaning: HP_0012735 #needs review
+      stomatitis:
+        aliases:
+          - EFO_0009688
+        description: stomatitis
+        meaning: EFO_0009688
+      fever:
+        aliases:
+          - HP_0001945
+        description: fever
+        meaning: HP_0001945 #needs review
+      pyelonephritis:
+        aliases:
+          - EFO_1001141
+        description: pyelonephritis
+        meaning: EFO_1001141
+      infectiousgastroenteritis:
+        aliases:
+          - EFO_1001463
+        description: gastroenteritis
+        meaning: EFO_1001463
+      tonsillitis:
+        aliases:
+          - HP_0011110
+        description: Tonsillitis
+        meaning: HP_0011110 #needs review *Recurrent tonsilitis*
+      cystitis:
+        aliases:
+          - EFO_1000025
+        description: cystitis
+        meaning: EFO_1000025
+      abdominalhernia:
+        aliases:
+          - HP_0004299
+        description: abdominal Hernia
+        meaning: HP_0004299 #needs review
+      psoriasis:
+        aliases:
+          - EFO_0000676
+        description: psoriasis
+        meaning: EFO_0000676
+      cephalosporins:
+        aliases:
+          - NCIT_C357
+        description: a large group of antibiotics derived from the mold Acremonium
+        meaning: NCIT_C357 #needs review
+      AS:
+        aliases:
+          - EFO_0003898
+        description: ankylosing spondylitis
+        meaning: EFO_0003898
+      RA:
+        aliases:
+          - EFO_0000685
+        description: rheumatoid Arthritis
+        meaning: EFO_0000685
+      metabolic_syndrome:
+        aliases:
+          - EFO_0000195
+        description: metabolic syndrome
+        meaning: EFO_0000195
+      FMT:
+        description: fecal microbiota transplant
+        # meaning: #cannot find ontology
+      premature_born:
+        aliases:
+          - EFO_0003917
+        description: premature birth
+        meaning: EFO_0003917
+      periodontitis:
+        aliases:
+          - EFO_0000649
+        description: periodontitis
+        meaning: EFO_0000649
+      SRP:
+        description: #signal recognition particle?
+        # meaning: #http://purl.org/obo/owl/GO#GO_0005786
+      STH:
+        description: #somatotropin
+        # meaning:  #http://purl.org/obo/owl/FMA#FMA_74637  #needs review
+      BD:
+        aliases:
+          - EFO_0003780
+        description: behcet's syndrome
+        meaning: EFO_0003780
+      chorioamnionitis:
+        aliases:
+          - EFO_0009948
+        description: chorioamnionitis
+        meaning: EFO_0009948
+      pre-eclampsia:
+        aliases:
+          - EFO_0000668
+        description: preeclampsia
+        meaning: EFO_0000668
+      carcinoma_surgery_history:
+        description: history of carcinoma surgery
+        #meaning: UNKNOWN
+      healthy:
+        aliases:
+          - NCIT_C115935
+        description: healthy
+        meaning: NCIT_C115935
+      hepatitis:
+        aliases:
+          - HP_0012115
+        description: hepatitis
+        meaning: HP_0012115
+      hypercholesterolemia:
+        aliases:
+          - HP_0003124
+        description: hypercholesterolemia
+        meaning: HP_0003124
+      ascaris_lumbricoides:
+        aliases:
+          - EFO_0007154
+        description: ascaris lumbricoides
+        meaning: EFO_0007154
+      necator_americanus:
+        aliases:
+          - NCIT_C123524
+        description: necator americanus
+        meaning: NCIT_C123524
+      trichuris_trichiura:
+        aliases:
+          - EFO_0007524
+        description: trichuris trichiura
+        meaning: EFO_0007524
+      metastases:
+        aliases:
+          - EFO_0000384
+        description: crohn's disease
+        meaning: EFO_0000384
+      UC:
+        aliases:
+          - EFO_0000729
+        description: ulcerative Colitis
+        meaning: EFO_0000729
+      smalladenoma:
+        aliases:
+          - NCIT_C5340
+        description: small intestinal adenoma
+        meaning: NCIT_C5340
+      largeadenoma:
+        aliases:
+          - DOID_0050914
+        description: large intestinal adenoma
+        meaning: DOID_0050914 #needs review
+      advancedadenoma:
+        aliases:
+          - EFO_0000228
+        description: adenocarcinoma
+        meaning: EFO_0000228
+      carcinoma:
+        aliases:
+          - EFO_0000228
+        description: carcinoma
+        meaning: EFO_0000313
+      cholera:
+        aliases:
+          - NCIT_C157812
+        description: cholera
+        meaning: NCIT_C157812
+      T1D_nonconverter:
+        description: #what is a non-converter???
+        #meaning: UNKNOWN
+      T1D_seroconverter:
+        description: Type 1 diabetes usually has a preclinical phase identified by circulating islet autoantibodies, but the rate of progression to diabetes after seroconversion to islet autoantibodies is uncertain.
+        #meaning: UNKNOWN
+      NAFLD:
+        aliases:
+          - EFO_1001248
+        description: non alcoholic fatty liver disease
+        meaning: EFO_1001248
+      Indeterminate_colitis:
+        aliases:
+          - EFO_1000034
+        description: indeterminate colitis
+        meaning: EFO_1000034
+
+  Disease_subtype:
+    permissible_values:
+      healthy:
+      CD:
+      UC:
+      HBV:
+      HDV:
+      HEV:
+      cirrhosis:
+      adenoma:
+      smalladenoma:
+      largeadenoma:
+      advancedadenoma:
+      adenocarcinoma:
+      carcinoma:
+      AS:
+      cholera:
+      T1D_nonconverter:
+      T1D_seroconverter:
+      NAFLD:
+      Ulcerative_colitis:
+      undetermined_colitis:
+      ascaris_lumbricoides:
+      necator_americanus:
+      trichuris_trichiura:
+      hookworm:
+      microfilaria_spp:
+      plasmodium_falciparum:
+      microfilaria_loa_loa:
+      entamoeba_histolytica:
+      mansonella_perstans:
+      first_episode_schizofrenia:
+      repeated_episodes_shizofrenia:
+
+  Ajcc_enum:
+    permissible_values:
+      0:
+      i:
+      ii:
+      iii:
+      iv:
+      iii/iv:
+
+  Stec_count_enum:
+    permissible_values:
+      high:
+      moderate:
+      low:
+
+  Pos_neg:
+    permissible_values:
+      positive:
+      negative:
+
+  Texture:
+    permissible_values:
+      smooth:
+      watery:
+      bloody:
+
+  Family_Role:
+    permissible_values:
+      child:
+      mother:
+      father:
+
+  Diet:
+    permissible_values:
+      omnivore:
+      vegan:
+      vegetarian:
+
+  Zigosity:
+    permissible_values:
+      monozygotic:
+      dizygotic:
+
+  Born_method_enum:
+    permissible_values:
+      c_section:
+      vaginal:
+      NA:
+
+  Treatment:
+    permissible_values:
+      no:
+      EEN:
+      5-ASA:
+      aza:
+      modulen_suppl:
+      iron:
+      folate:
+      forceval:
+      methotrexate:
+      Lactulose:
+      probiotic:
+      NSAID:
+      anthelmintics:
+      albendazole:
+      metformin:
+      sitagliptin:
+      lantus:
+      solostar:
+      novorapid:
+      CTLA4:
+      PD1:
+      steroids:
+      PPI:
+      ipilumumab:
+      nivolmab:
+      pembrolizumab:
+      sulphonylurea:
+
+  Dental_Samples:
+    permissible_values:
+      teeth:
+      implant:
+
+  Menopausual_Status:
+    permissible_values:
+      pre:
+      going_through:
+      post:
+
+  RECIST_enum:
+    permissible_values:
+      SD:
+      PR:
+      PD:
+      CR:
+
+  Curator:
+    permissible_values:
+      Paolo_Manghi:
+      Valentina_Giunchiglia:
+      Pamela_Ferretti:
+      Marisa_Metzger:
+      Giacomo_DAmato:
+      Jacob_Wirbel:
+      Arianna_Bonetti:
+      Anna_Pedrotti:
+      Francesca_DeFilippis:
+      Aitor_Blanco_Miguez:
+      Arianna_Bonetti;Anna_Pedrotti:
+      Francesco_Asnicar;Paolo_Manghi:
+      Ilya_Likhotkin;Paolo_Manghi:
+      Aitor_Blanco_Miguez;Paolo_Manghi:
+      Giacomo_Damato;Paolo_Manghi:
+      Anna_Pedrotti;Paolo_Manghi:
+      Mireia_VallesColomer:
+#study_condition, disease, disease_subtype slots can be pulled from disease_ontoology.yaml

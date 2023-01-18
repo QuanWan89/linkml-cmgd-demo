@@ -1,0 +1,16 @@
+name: validate cmgd metadata
+on: [workflow_dispatch]
+jobs:
+  validate-cmgd-metadata:
+    runs-on: quanwan89/linkml-cmgd:latest
+    steps:
+      - name: Get code
+        uses: actions/checkout@v3
+      - name: get pwd
+        run: |
+          pwd
+          ls
+      - name: run batch script
+        run: |
+          cd $GITHUB_WORKSPACE/linkml-cmgd-demo
+          sh batch.sh
