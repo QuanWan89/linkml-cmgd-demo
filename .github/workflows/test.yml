@@ -2,7 +2,8 @@ name: validate cmgd metadata
 on: [workflow_dispatch]
 jobs:
   validate-cmgd-metadata:
-    runs-on: quanwan89/linkml-cmgd
+    #runs-on: quanwan89/linkml-cmgd
+    runs-on: node:latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
