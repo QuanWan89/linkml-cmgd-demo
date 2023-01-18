@@ -27,7 +27,7 @@ jobs:
       - name: linkml validate
         if: always()
         run: |
-          linkml-validate -s schema.yaml test.json > results.txt
+          linkml-validate -s schema.yaml test.json 2> results.txt
           cat results.txt
       - name: Setup git config
         run: |
