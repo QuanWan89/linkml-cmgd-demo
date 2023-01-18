@@ -3,7 +3,7 @@ on: [workflow_dispatch]
 jobs:
   validate-cmgd-metadata:
     #runs-on: quanwan89/linkml-cmgd
-    runs-on: node:latest
+    runs-on: ubuntu-latest
     steps:
       - name: Get code
         uses: actions/checkout@v3
