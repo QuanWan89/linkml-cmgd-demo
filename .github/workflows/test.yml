@@ -21,13 +21,15 @@ jobs:
           pip install linkml
       - name: convert csv to json
         run: |
+          gen-json-schema $GITHUB_WORKSPACE/schema.yaml > schema.json
           csv2json -d -t $GITHUB_WORKSPACE/inst/curated/AsnicarF_2017/AsnicarF_2017_metadata.tsv test.json
-          sed -i '1s/^/{"samples":/' test.json
-          echo '}' >> test.json
-      - name: linkml validate
+          node $GITHUB_WORKSPACE/scripts/postConversion.js
+          sed -i '1s/^/{"samples":/' new_test.json
+          echo '}' >> new_test.json
+      - name: jsonschema validate
         continue-on-error: true
         run: |
-          linkml-validate -s schema.yaml test.json 2> results.txt
+          jsonschema -i new_test.json schema.json &> results.txt
           cat results.txt
       - name: Setup git config
         run: |
