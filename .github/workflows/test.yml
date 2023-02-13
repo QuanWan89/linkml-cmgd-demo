@@ -38,5 +38,6 @@ jobs:
       - name: Commit Exports
         run: |
           git add results.txt
+          git add new_test.json
           git commit -m "validation update"
           git push origin main
