@@ -19,18 +19,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install linkml
-      - name: convert csv to json
-        run: |
-          gen-json-schema $GITHUB_WORKSPACE/schema.yaml > schema.json
-          csv2json -d -t $GITHUB_WORKSPACE/inst/curated/AsnicarF_2017/AsnicarF_2017_metadata.tsv test.json
-          node $GITHUB_WORKSPACE/scripts/postConversion.js
-          sed -i '1s/^/{"samples":/' new_test.json
-          echo '}' >> new_test.json
-      - name: jsonschema validate
+      - name: convert csv to json && jsonschema validate
         continue-on-error: true
         run: |
-          jsonschema -i new_test.json schema.json &> results.txt
-          cat results.txt
+          sh $GITHUB_WORKSPACE/scripts/batch.sh
       - name: Setup git config
         run: |
           git config user.name "GitHub Actions Bot"

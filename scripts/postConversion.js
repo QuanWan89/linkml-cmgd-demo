@@ -20,7 +20,7 @@ for (var prop in schema_obj["$defs"]["Sample"]["properties"]) {
 }
 
 // Read json file and replace array with string
-let rawdata = fs.readFileSync(path.resolve(__dirname, "../test.json"));
+let rawdata = fs.readFileSync(path.resolve(__dirname, "../converted.json"));
 let samples = JSON.parse(rawdata);
 samples.forEach((item, index, arr) => {
   array_attributes.forEach((att) => {
@@ -32,4 +32,4 @@ samples.forEach((item, index, arr) => {
 
 // Write new json file
 let data = JSON.stringify(samples);
-fs.writeFileSync("new_test.json", data);
+fs.writeFileSync("final.json", data);
