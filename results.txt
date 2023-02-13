@@ -1,39 +1,16 @@
+Checking result for file /home/runner/work/linkml-cmgd-demo/linkml-cmgd-demo/inst/curated/AsnicarF_2017/AsnicarF_2017_metadata.tsv...
 /opt/hostedtoolcache/Python/3.10.9/x64/bin/jsonschema:5: DeprecationWarning: The jsonschema CLI is deprecated and will be removed in a future version. Please use check-jsonschema instead, which can be installed from https://pypi.org/project/check-jsonschema/
   from jsonschema.cli import main
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
-NA: 'NA' is not of type 'integer'
+Failed to parse 'final.json': Extra data: line 1 column 13914 (char 13913)
+Checking result for file /home/runner/work/linkml-cmgd-demo/linkml-cmgd-demo/inst/curated/AsnicarF_2021/AsnicarF_2021_metadata.tsv...
+/opt/hostedtoolcache/Python/3.10.9/x64/bin/jsonschema:5: DeprecationWarning: The jsonschema CLI is deprecated and will be removed in a future version. Please use check-jsonschema instead, which can be installed from https://pypi.org/project/check-jsonschema/
+  from jsonschema.cli import main
+Failed to parse 'final.json': Extra data: line 1 column 694620 (char 694619)
+Checking result for file /home/runner/work/linkml-cmgd-demo/linkml-cmgd-demo/inst/curated/BackhedF_2015/BackhedF_2015_metadata.tsv...
+/opt/hostedtoolcache/Python/3.10.9/x64/bin/jsonschema:5: DeprecationWarning: The jsonschema CLI is deprecated and will be removed in a future version. Please use check-jsonschema instead, which can be installed from https://pypi.org/project/check-jsonschema/
+  from jsonschema.cli import main
+Failed to parse 'final.json': Extra data: line 1 column 264849 (char 264848)
+Checking result for file /home/runner/work/linkml-cmgd-demo/linkml-cmgd-demo/inst/curated/BedarfJR_2017/BedarfJR_2017_metadata.tsv...
+/opt/hostedtoolcache/Python/3.10.9/x64/bin/jsonschema:5: DeprecationWarning: The jsonschema CLI is deprecated and will be removed in a future version. Please use check-jsonschema instead, which can be installed from https://pypi.org/project/check-jsonschema/
+  from jsonschema.cli import main
+Failed to parse 'final.json': Extra data: line 1 column 39209 (char 39208)
