@@ -1,4 +1,4 @@
-study_name	sample_id	subject_id	body_site	antibiotics_current_use	study_condition	disease	age	infant_age	age_category	gender	country	test_non_westernized	sequencing_platform	DNA_extraction_kit	PMID	number_reads	number_bases	minimum_read_length	median_read_length	NCBI_accession	pregnant	lactating	curator
+study_name	sample_id	subject_id	body_site	antibiotics_current_use	study_condition	disease	age	infant_age	age_category	gender	country	non_westernized	sequencing_platform	DNA_extraction_kit	PMID	number_reads	number_bases	minimum_read_length	median_read_length	NCBI_accession	pregnant	lactating	curator
 AsnicarF_2017	MV_FEI1_t1Q14	MV_FEI1	stool	NA	control	healthy	0	90	newborn	female	ITA	test_no	IlluminaHiSeq	Qiagen	28144631	27553455	2748531713	80	100	SRR4052021	test_no	test_no	Paolo_Manghi
 AsnicarF_2017	MV_FEI2_t1Q14	MV_FEI2	stool	NA	control	healthy	0	90	newborn	male	ITA	test_no	IlluminaHiSeq	Qiagen	28144631	32197545	3210606434	80	100	SRR4052022	test_no	test_no	Paolo_Manghi
 AsnicarF_2017	MV_FEI3_t1Q14	MV_FEI3	stool	NA	control	healthy	0	90	newborn	male	ITA	test_no	IlluminaHiSeq	Qiagen	28144631	32310216	3222955818	80	100	SRR4052033	test_no	test_no	Paolo_Manghi
